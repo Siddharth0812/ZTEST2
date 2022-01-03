@@ -1,0 +1,77 @@
+<mvc:View controllerName="com.table.ZTEST2.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<Page id="page" title="{i18n>title}">
+				<SearchField width="300px" placeholder="search by material" search="onFilterPosts"></SearchField>
+			
+				<Table id="task1_table" items="{localModel>/Material}" growing="true" growingThreshold="20">
+						<!--<SearchField width="300px" placeholder="search by material" search="onFilterPosts"></SearchField>-->
+						<headerToolbar>
+					<Toolbar>
+				<ToolbarSpacer/>
+				<Label id="count"></Label>
+				
+				<Button icon="sap-icon://sort" tooltip="{i18n>sortButtonText}" press="onSort"></Button>
+				</Toolbar>
+				</headerToolbar>
+					<columns>
+						<Column>
+							<Text text="Material"></Text>
+						</Column>
+						<Column>
+							<Text text="Created By"></Text>
+						</Column>
+						<Column>
+							<Text text="Changed By"></Text>
+						</Column>
+						<Column>
+							<Text text="Complete Status"></Text>
+						</Column>
+						<Column>
+							<Text text="Maint. Status"></Text>
+						</Column>
+						<Column>
+							<Text text="Material Type"></Text>
+						</Column>
+						<Column>
+							<Text text="Industry Sector"></Text>
+						</Column>
+						<Column>
+							<Text text="Material Group"></Text>
+						</Column>
+						<Column>
+							<Text text="Old Mail Number"></Text>
+						</Column>
+						<Column>
+							<Text text="Base unit"></Text>
+						</Column>
+						<Column>
+							<Text text="Order Unit"></Text>
+						</Column>
+						<Column>
+							<Text text="DF Client Level"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onOpenDialog" type="Active">
+							<cells>
+								<Text text="{localModel>Matnr}"></Text>
+								<Text text="{localModel>Ernam}"></Text>
+								<Text text="{localModel>Aenam}"></Text>
+								<Text text="{localModel>Vpsta}"></Text>
+								<Text text="{localModel>Pstat}"></Text>
+								<Text text="{localModel>Lvorm}"></Text>
+								<Text text="{localModel>Mtart}"></Text>
+								<Text text="{localModel>Mbrsh}"></Text>
+								<Text text="{localModel>Matkl}"></Text>
+								<Text text="{localModel>Bismt}"></Text>
+								<Text text="{localModel>Meins}"></Text>
+								<Text text="{localModel>Bstme}"></Text>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</Page>
+		</App>
+	</Shell>
+</mvc:View>
