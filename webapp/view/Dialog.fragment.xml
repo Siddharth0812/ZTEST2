@@ -1,16 +1,16 @@
 <core:FragmentDefinition  xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
 	<Dialog id="helloDialog" title="Test">
-		<f:SimpleForm editable="false">
+		<f:SimpleForm editable="false" id="myform">
 	<Label text="Material"> </Label>
-	<Input value="{localModel>Matnr}" enabled="false"></Input>
+	<Input value="{localModel>/Data/Matnr}" enabled="false"></Input>
 	<Label text="Created By"> </Label>
-	<Input value="{localModel>Ernam}" enabled="false" ></Input>
+	<Input value="{localModel>/Data/Ernam}" enabled="false" ></Input>
 	<Label text="Changed By"> </Label>
-	<Input value="{localModel>Aenam}"  enabled="false"></Input>
+	<Input value="{localModel>/Data/Aenam}"  enabled="false"></Input>
 	<Label text="Complete Status"> </Label>
-	<Input value="{localModel>Vpsta}"  enabled="false"></Input>
+	<Input value="{localModel>/Data/Vpsta}"  enabled="false"></Input>
 	<Label text="Maint. Status"> </Label>
-	<Input value="{localModel>Pstat}"  enabled="false"></Input>
+	<Input value="{localModel>/Data/Pstat}"  enabled="false"></Input>
 	</f:SimpleForm>
 	<beginButton>
          <Button text="{i18n>dialogCloseButtonText}" press=".onCloseDialog"/>

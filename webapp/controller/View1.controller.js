@@ -56,26 +56,36 @@ sap.ui.define([
 			MessageToast.show(sMessage);
 		},
 
-		onOpenDialog: function (oEvent) {
-			this._showObject(oEvent.getSource());
+		rowSelect: function (oEvent) {
+			var mMaterial = oEvent.getParameter("listItem").getBindingContext("localModel").sPath.split("/")[2];
+			var ePath = oEvent.getParameter("listItem").getBindingContext("localModel").oModel.oData.Material[mMaterial];
+			//var pModel = new JSONModel();
+			//pModel.setData(ePath);
+			this.localModel.setProperty("/Data", ePath);
+			//var oSimpleForm = this.getView().byId("myform");
+            //oSimpleForm.bindElement(ePath);
+			//this._showObject(oEvent.getSource());
+			//	this.oModel = this.getOwnerComponent().setModel("localModel");
 			if (!this.pDialog) {
 				this.pDialog = this.loadFragment({
 					name: "com.table.ZTEST2.view.Dialog"
 				});
+				//this.getView().addDependent(this.pDialog);
 			}
 			this.pDialog.then(function (oDialog) {
+				//this.pDialog = this.getOwnerComponent().setModel("localModel"); 
 				oDialog.open();
 			});
 		},
 		onCloseDialog: function () {
 			this.byId("helloDialog").close();
 		},
-		
-		_showObject: function(oItem){
-			objectId: oItem.getBindingContext().getProperty("Matnr");
-			},
-		
-	
+
+		/*_showObject: function(oItem){
+	var sPath = oItem.getBindingContextPath();
+	var oSimpleForm = this.byId(Fragment.createId("helloDialog", "myform"));
+	oSimpleForm.bindElement(sPath);
+			}, */
 
 		readData: function () {
 			this.localModel = new JSONModel({

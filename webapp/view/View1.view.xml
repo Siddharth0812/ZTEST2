@@ -4,7 +4,7 @@
 			<Page id="page" title="{i18n>title}">
 				<SearchField width="300px" placeholder="search by material" search="onFilterPosts"></SearchField>
 			
-				<Table id="task1_table" items="{localModel>/Material}" growing="true" growingThreshold="20">
+				<Table id="task1_table" items="{localModel>/Material}" growing="true" growingThreshold="20" enableBusyIndicator="true" mode="SingleSelectMaster" selectionChange="rowSelect">
 						<!--<SearchField width="300px" placeholder="search by material" search="onFilterPosts"></SearchField>-->
 						<headerToolbar>
 					<Toolbar>
@@ -53,7 +53,7 @@
 						</Column>
 					</columns>
 					<items>
-						<ColumnListItem press="onOpenDialog" type="Active">
+						<ColumnListItem>
 							<cells>
 								<Text text="{localModel>Matnr}"></Text>
 								<Text text="{localModel>Ernam}"></Text>
