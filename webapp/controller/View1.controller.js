@@ -15,7 +15,7 @@ sap.ui.define([
 		onInit: function () {
 
 			this.oModel = this.getOwnerComponent().getModel();
-			this.readData();
+			//this.readData();
 
 		},
 
@@ -23,7 +23,7 @@ sap.ui.define([
 
 			// build filter array
 			var aFilter = [];
-			var sQuery = oEvent.getParameter("query");
+			var sQuery = oEvent.getParameter("newValue");
 			if (sQuery) {
 				aFilter.push(new Filter("Matnr", FilterOperator.Contains, sQuery));
 			}
@@ -43,49 +43,45 @@ sap.ui.define([
 			var oView = this.getView(),
 				aStates = [undefined, "asc", "desc"],
 				aStateTextIds = ["sortNone", "sortAscending", "sortDescending"],
-				sMessage,
-				iOrder = oView.getModel("localModel").getProperty("/Order");
+				sMessage;
+				//iOrder = oView.getModel().getProperty("/Order");
 
-			iOrder = (iOrder + 1) % aStates.length;
-			var sOrder = aStates[iOrder];
+			//iOrder = (iOrder + 1) % aStates.length;
+			//var sOrder = aStates[iOrder];
 
-			oView.getModel("localModel").setProperty("/Order", iOrder);
-			oView.byId("task1_table").getBinding("items").sort(sOrder && new Sorter("Matnr", sOrder === "desc"));
+			//oView.getModel().setProperty("/Order", iOrder);
+			oView.byId("task1_table").getBinding("items").sort( new Sorter("Matnr","asc"));
 
-			sMessage = this._getText("sortMessage", [this._getText(aStateTextIds[iOrder])]);
-			MessageToast.show(sMessage);
+			//sMessage = this._getText("sortMessage", [this._getText(aStateTextIds[iOrder])]);
+			//MessageToast.show(sMessage);
 		},
-
 		rowSelect: function (oEvent) {
-			var mMaterial = oEvent.getParameter("listItem").getBindingContext("localModel").sPath.split("/")[2];
-			var ePath = oEvent.getParameter("listItem").getBindingContext("localModel").oModel.oData.Material[mMaterial];
-			//var pModel = new JSONModel();
-			//pModel.setData(ePath);
-			this.localModel.setProperty("/Data", ePath);
-			//var oSimpleForm = this.getView().byId("myform");
-            //oSimpleForm.bindElement(ePath);
-			//this._showObject(oEvent.getSource());
-			//	this.oModel = this.getOwnerComponent().setModel("localModel");
-			if (!this.pDialog) {
-				this.pDialog = this.loadFragment({
-					name: "com.table.ZTEST2.view.Dialog"
-				});
-				//this.getView().addDependent(this.pDialog);
+
+			/* var oSelectedItem = oEvent.getParameter("listItem");
+			var sPath = oSelectedItem.getBindingContext("localModel").getPath();
+			var sIndex = sPath.split("/")[sPath.split("/").length - 1];
+			var oSimpleForm= this.getView().byId("myform");
+			oSimpleForm.bindElement(sIndex); */
+
+		//this.localModel.setProperty("/Data", sIndex);
+		var mMaterial = oEvent.getParameter("listItem").getBindingContext().sPath.split("/")[2];
+		var ePath = oEvent.getParameter("listItem").getBindingContext().oModel.oData.Material[mMaterial];
+		//this.localModel.setProperty("/Data", ePath);
+
+		if (!this.pDialog) {
+
+			this.pDialog = this.loadFragment({
+				name: "com.table.ZTEST2.view.Dialog"
+			});
+		//this.getView().addDependent(this.pDialog);
 			}
 			this.pDialog.then(function (oDialog) {
-				//this.pDialog = this.getOwnerComponent().setModel("localModel"); 
 				oDialog.open();
 			});
-		},
-		onCloseDialog: function () {
-			this.byId("helloDialog").close();
-		},
-
-		/*_showObject: function(oItem){
-	var sPath = oItem.getBindingContextPath();
-	var oSimpleForm = this.byId(Fragment.createId("helloDialog", "myform"));
-	oSimpleForm.bindElement(sPath);
-			}, */
+			},
+			onCloseDialog: function () {
+				this.byId("helloDialog").close();
+			}, 
 
 		readData: function () {
 			this.localModel = new JSONModel({

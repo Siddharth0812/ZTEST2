@@ -2,71 +2,71 @@
 	<Shell id="shell">
 		<App id="app">
 			<Page id="page" title="{i18n>title}">
-				<SearchField width="300px" placeholder="search by material" search="onFilterPosts"></SearchField>
+				<SearchField width="300px" placeholder="search by material" liveChange="onFilterPosts"></SearchField>
 			
-				<Table id="task1_table" items="{localModel>/Material}" growing="true" growingThreshold="20" enableBusyIndicator="true" mode="SingleSelectMaster" selectionChange="rowSelect">
+				<Table id="task1_table" items="{/MaterialSet}" growing="true" growingScrollToLoad="true" enableBusyIndicator="true" sticky="ColumnHeaders" mode="SingleSelectMaster" selectionChange="rowSelect">
 						<!--<SearchField width="300px" placeholder="search by material" search="onFilterPosts"></SearchField>-->
 						<headerToolbar>
 					<Toolbar>
 				<ToolbarSpacer/>
 				<Label id="count"></Label>
 				
-				<Button icon="sap-icon://sort" tooltip="{i18n>sortButtonText}" press="onSort"></Button>
+				<Button icon="sap-icon://sort" tooltip="{i18n>sortButtonText}" press="handleSortButtonPressed"></Button>
 				</Toolbar>
 				</headerToolbar>
 					<columns>
 						<Column>
-							<Text text="Material"></Text>
+							<Label text="Material Number" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Created By"></Text>
+							<Label text="Created By" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Changed By"></Text>
+							<Label text="Changed By" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Complete Status"></Text>
+							<Label text="Complete Status" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Maint. Status"></Text>
+							<Label text="Maint. Status" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Material Type"></Text>
+							<Label text="Material Type" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Industry Sector"></Text>
+							<Label text="Industry Sector" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Material Group"></Text>
+							<Label text="Material Group" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Old Mail Number"></Text>
+							<Label text="Old Mail Number" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Base unit"></Text>
+							<Label text="Base unit" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="Order Unit"></Text>
+							<Label text="Order Unit" design="Bold"></Label>
 						</Column>
 						<Column>
-							<Text text="DF Client Level"></Text>
+							<Label text="DF Client Level" design="Bold"></Label>
 						</Column>
 					</columns>
 					<items>
 						<ColumnListItem>
 							<cells>
-								<Text text="{localModel>Matnr}"></Text>
-								<Text text="{localModel>Ernam}"></Text>
-								<Text text="{localModel>Aenam}"></Text>
-								<Text text="{localModel>Vpsta}"></Text>
-								<Text text="{localModel>Pstat}"></Text>
-								<Text text="{localModel>Lvorm}"></Text>
-								<Text text="{localModel>Mtart}"></Text>
-								<Text text="{localModel>Mbrsh}"></Text>
-								<Text text="{localModel>Matkl}"></Text>
-								<Text text="{localModel>Bismt}"></Text>
-								<Text text="{localModel>Meins}"></Text>
-								<Text text="{localModel>Bstme}"></Text>
+								<Text text="{Matnr}"></Text>
+								<Text text="{Ernam}"></Text>
+								<Text text="{Aenam}"></Text>
+								<Text text="{Vpsta}"></Text>
+								<Text text="{Pstat}"></Text>
+								<Text text="{Lvorm}"></Text>
+								<Text text="{Mtart}"></Text>
+								<Text text="{Mbrsh}"></Text>
+								<Text text="{Matkl}"></Text>
+								<Text text="{Bismt}"></Text>
+								<Text text="{Meins}"></Text>
+								<Text text="{Bstme}"></Text>
 							</cells>
 						</ColumnListItem>
 					</items>
